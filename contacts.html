@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - ИНФОПОВОД</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('fon.png') center/cover fixed no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }	
+        
+        header {
+            background-color: #222;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        nav {
+            background-color: #333;
+            padding: 0.5rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            color: #222;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .contact-item {
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #333;
+        }
+        
+        .contact-item h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.2rem;
+        }
+        
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        input, textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        button[type="submit"] {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #555;
+        }
+        
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 20% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            animation: modalopen 0.4s;
+            position: relative;
+        }
+        
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #aaa;
+            font-size: 1.8rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-btn:hover {
+            color: #333;
+        }
+        
+        .modal-icon {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        
+        /* Мобильная адаптация */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+            
+            .container {
+                margin: 1rem auto;
+                padding: 1rem;
+                width: 95%;
+            }
+            
+            header {
+                padding: 0.5rem 0;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+                margin-bottom: 0.25rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            nav ul li {
+                margin: 0.25rem 0;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 0.8rem;
+                text-align: center;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .form-group {
+                margin-bottom: 1rem;
+            }
+            
+            input, textarea {
+                padding: 0.7rem;
+                font-size: 16px;
+            }
+            
+            button[type="submit"] {
+                padding: 0.8rem;
+                font-size: 16px;
+            }
+            
+            .modal-content {
+                margin: 30% auto;
+                padding: 1.5rem;
+                width: 85%;
+            }
+            
+            section {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
+                margin-bottom: 0.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 0.5rem auto;
+                padding: 0.8rem;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            section {
+                padding: 1rem;
+            }
+            
+            .modal-content {
+                margin: 40% auto;
+                padding: 1rem;
+            }
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            nav ul li a:hover {
+                background-color: transparent;
+            }
+            
+            button:hover {
+                background-color: #333;
+            }
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">ИНФОПОВОД</div>
+        <img src="IP.png" alt="ИНФОПОВОД">
+        <div>Кавер-группа на популярные хиты</div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="repertoire.html">Репертуар</a></li>
+            <li><a href="concerts.html">Концерты</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section>
+            <h1>Свяжитесь с нами</h1>
+            <p>Хотите заказать выступление или получить дополнительную информацию? Мы всегда рады общению!</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📞 Телефон</h3>
+                    <p>+7 (XXX) XXX-XX-XX</p>
+                    <p>+7 (XXX) XXX-XX-XX</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>✉️ Email</h3>
+                    <p>info@infopovod.ru</p>
+                    <p>booking@infopovod.ru</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>📍 Адрес</h3>
+                    <p>г. Москва, ул. Примерная, д. 123</p>
+                    <p>(репетиционная база)</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>🕒 Время связи</h3>
+                    <p>Пн-Пт: 10:00 - 22:00</p>
+                    <p>Сб-Вс: 12:00 - 20:00</p>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Заказать выступление</h2>
+            <p>Заполните форму ниже, и мы свяжемся с вами в ближайшее время для обсуждения деталей вашего мероприятия.</p>
+            
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="name">Ваше имя *</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Телефон *</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-type">Тип мероприятия</label>
+                    <input type="text" id="event-type" placeholder="Свадьба, корпоратив, день рождения...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-date">Дата мероприятия</label>
+                    <input type="date" id="event-date">
+                </div>
+                
+                <div class="form-group">
+                    <label for="guests">Количество гостей</label>
+                    <input type="number" id="guests" min="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Дополнительная информация</label>
+                    <textarea id="message" placeholder="Место проведения, пожелания по репертуару, особые требования..."></textarea>
+                </div>
+                
+                <button type="submit">Отправить заявку</button>
+            </form>
+        </section>
+        
+        <section>
+            <h2>Мы в социальных сетях</h2>
+            <p>Подписывайтесь на наши страницы, чтобы быть в курсе всех новостей, смотреть видео выступлений и узнавать о новых концертах первыми!</p>
+            
+            <div class="social-links" style="text-align: center; margin: 2rem 0;">
+                <a href="#" style="color: #333; font-size: 2rem; margin: 0 1rem;"><i class="fab fa-vk"></i></a>
+                <a href="#" style="color: #333; font-size: 2rem; margin: 0 1rem;"><i class="fab fa-youtube"></i></a>
+                <a href="#" style="color: #333; font-size: 2rem; margin: 0 1rem;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color: #333; font-size: 2rem; margin: 0 1rem;"><i class="fab fa-telegram"></i></a>
+            </div>
+        </section>
+    </div>
+    
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Заявка отправлена!</h2>
+            <p>Мы свяжемся с вами в течение 24 часов.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2023 ИНФОПОВОД. Все права защищены.</p>
+    </footer>
+
+    <script>
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('success-modal').style.display = 'block';
+            this.reset();
+        });
+        
+        document.querySelector('.close-btn').addEventListener('click', function() {
+            document.getElementById('success-modal').style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(e) {
+            if (e.target == document.getElementById('success-modal')) {
+                document.getElementById('success-modal').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
