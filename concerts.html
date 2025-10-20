@@ -144,6 +144,193 @@
             font-size: 1.5rem;
             text-decoration: none;
         }
+	/* Мобильная адаптация */
+@media (max-width: 768px) {
+    /* Общие исправления */
+    body {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    
+    .container {
+        margin: 1rem auto;
+        padding: 1rem;
+        width: 95%;
+    }
+    
+    /* Шапка */
+    header {
+        padding: 0.5rem 0;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    /* Навигация */
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    nav ul li {
+        margin: 0.25rem 0;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 0.8rem;
+        text-align: center;
+    }
+    
+    /* Участники группы */
+    .members {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .member {
+        flex: 1 1 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .member img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    /* Галерея */
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    .gallery img {
+        height: 150px;
+    }
+    
+    /* Формы */
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    input, textarea {
+        padding: 0.7rem;
+        font-size: 16px; /* Отключает zoom в iOS */
+    }
+    
+    button[type="submit"] {
+        padding: 0.8rem;
+        font-size: 16px;
+    }
+    
+    /* Репертуар */
+    .repertoire-list {
+        columns: 1;
+    }
+    
+    /* Концерты */
+    .concert {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Модальные окна */
+    .modal-content {
+        margin: 30% auto;
+        padding: 1.5rem;
+        width: 85%;
+    }
+    
+    /* Видео */
+    .video-container {
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Секции */
+    section {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.6rem;
+    }
+}
+
+/* Дополнительные исправления для очень маленьких экранов */
+@media (max-width: 480px) {
+    .container {
+        margin: 0.5rem auto;
+        padding: 0.8rem;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    .member img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .gallery img {
+        height: 120px;
+    }
+    
+    section {
+        padding: 1rem;
+    }
+    
+    .modal-content {
+        margin: 40% auto;
+        padding: 1rem;
+    }
+}
+
+/* Исправление для касаний на мобильных */
+@media (hover: none) and (pointer: coarse) {
+    .member img:hover,
+    .gallery img:hover,
+    button:hover {
+        transform: none;
+    }
+    
+    nav ul li a:hover {
+        background-color: transparent;
+    }
+}
+
+/* Предотвращение горизонтального скролла */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Улучшение читаемости на мобильных */
+body {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Оптимизация для iOS */
+@supports (-webkit-touch-callout: none) {
+    input, textarea {
+        font-size: 16px; /* Предотвращает zoom */
+    }
+}
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
