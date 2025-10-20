@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Концерты - Название Группы</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+    body {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('fon.png') center/cover fixed no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+	}	
+
+        
+        header {
+            background-color: #222;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        nav {
+            background-color: #333;
+            padding: 0.5rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            color: #222;
+        }
+        
+        .concert {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #333;
+            transition: transform 0.3s;
+        }
+        
+        .concert:hover {
+            transform: translateX(5px);
+        }
+        
+        .concert-date {
+            color: #666;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .concert-place {
+            color: #444;
+            margin-bottom: 0.5rem;
+        }
+        
+        .concert-time {
+            color: #666;
+        }
+        
+        .past-concert {
+            opacity: 0.7;
+            border-left-color: #999;
+        }
+        
+        .concert-title {
+            color: #222;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Название Группы</div>
+        <div>Кавер-группа на популярные хиты</div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="repertoire.html">Репертуар</a></li>
+            <li><a href="concerts.html">Концерты</a></li>
+            <li><a href="index.html#contacts">Контакты</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section>
+            <h1>Ближайшие концерты</h1>
+            <p>Приходите на наши живые выступления! Вот расписание ближайших концертов:</p>
+            
+            <div class="concert">
+                <h3 class="concert-title">🎤 Вечер каверов</h3>
+                <div class="concert-date">15 декабря 2023</div>
+                <div class="concert-place">📍 Клуб "Рок-Сити", ул. Центральная, 15</div>
+                <div class="concert-time">⏰ Начало в 20:00</div>
+                <p>Три часа лучших каверов! От классики рока до современных хитов.</p>
+            </div>
+            
+            <div class="concert">
+                <h3 class="concert-title">🎄 Рождественский концерт</h3>
+                <div class="concert-date">23 декабря 2023</div>
+                <div class="concert-place">📍 Ресторан "Звезда", пр. Победы, 28</div>
+                <div class="concert-time">⏰ Начало в 19:30</div>
+                <p>Специальная рождественская программа с праздничными хитами.</p>
+            </div>
+            
+            <div class="concert">
+                <h3 class="concert-title">🎉 Новогодняя ночь</h3>
+                <div class="concert-date">31 декабря 2023</div>
+                <div class="concert-place">📍 Гостиница "Престиж", ул. Новая, 7</div>
+                <div class="concert-time">⏰ С 22:00 до 04:00</div>
+                <p>Встречаем Новый год вместе! Шесть часов музыки и веселья.</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Прошедшие выступления</h2>
+            
+            <div class="concert past-concert">
+                <h3 class="concert-title">🎸 Rock Night</h3>
+                <div class="concert-date">10 ноября 2023</div>
+                <div class="concert-place">📍 Бар "Гараж", ул. Индустриальная, 45</div>
+            </div>
+            
+            <div class="concert past-concert">
+                <h3 class="concert-title">💃 Дискотека 80-х</h3>
+                <div class="concert-date">28 октября 2023</div>
+                <div class="concert-place">📍 Клуб "Ретро", ул. Советская, 12</div>
+            </div>
+            
+            <div class="concert past-concert">
+                <h3 class="concert-title">🎵 Акустический вечер</h3>
+                <div class="concert-date">15 октября 2023</div>
+                <div class="concert-place">📍 Кофейня "У камина", ул. Тихая, 3</div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Хотите нас забронировать?</h2>
+            <p>Мы доступны для выступлений на:</p>
+            <ul>
+                <li>Свадьбах и юбилеях</li>
+                <li>Корпоративных мероприятиях</li>
+                <li>Фестивалях и городских праздниках</li>
+                <li>Открытиях магазинов и ресторанов</li>
+                <li>Частных вечеринках</li>
+            </ul>
+            <p>Перейдите на <a href="index.html#contacts">страницу контактов</a>, чтобы отправить заявку!</p>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2023 Название Группы. Все права защищены.</p>
+    </footer>
+</body>
+</html>

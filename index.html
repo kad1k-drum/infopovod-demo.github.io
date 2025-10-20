@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - ИНФОПОВОД</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+  body {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('fon.png') center/cover fixed no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+	}	
+        
+        header {
+            background-color: #222;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        nav {
+            background-color: #333;
+            padding: 0.5rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            color: #222;
+        }
+        
+        .members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 2rem;
+        }
+        
+        .member {
+            text-align: center;
+            flex: 1 1 200px;
+        }
+        
+        .member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #333;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.2rem;
+        }
+        
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        input, textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        button[type="submit"] {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #555;
+        }
+        
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 20% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            animation: modalopen 0.4s;
+            position: relative;
+        }
+        
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #aaa;
+            font-size: 1.8rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-btn:hover {
+            color: #333;
+        }
+        
+        .modal-icon {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">ИНФОПОВОД</div>
+	<img src="IP.png" alt="ИНФОПОВОД">
+        <div>Кавер-группа на популярные хиты</div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="repertoire.html">Репертуар</a></li>
+            <li><a href="concerts.html">Концерты</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="about">
+            <h2>О нашей группе</h2>
+            <p>Мы - профессиональная кавер-группа, исполняющая популярные хиты с оригинальным звучанием. Наш репертуар включает лучшие композиции разных эпох и стилей, адаптированные под современное звучание.</p>
+            <p>Основанная в 20XX году, наша группа уже успела завоевать признание публики на многочисленных мероприятиях и концертных площадках. Мы гарантируем высокое качество исполнения и создание незабываемой атмосферы на вашем мероприятии.</p>
+        </section>
+        
+        <section id="members">
+            <h2>Участники группы</h2>
+            <div class="members">
+                <div class="member">
+                    <img src="v.png" alt="Вокалист">
+                    <h3>Валерий</h3>
+                    <p>Вокал</p>
+                </div>
+                <div class="member">
+                    <img src="i.png" alt="Гитарист">
+                    <h3>Игорь</h3>
+                    <p>Гитара</p>
+                </div>
+                <div class="member">
+                    <img src="d.jpg" alt="Барабанщик">
+                    <h3>Даниэль</h3>
+                    <p>Барабаны</p>
+                </div>
+		<div class="member">
+                    <img src="r.png" alt="Клавиши">
+                    <h3>Роман</h3>
+                    <p>Клавиши</p>
+                </div>
+
+            </div>
+        </section>
+        
+        <section id="gallery">
+            <h2>Фото с наших выступлений</h2>
+            <div class="gallery">
+                <img src="https://via.placeholder.com/300x200" alt="Выступление 1">
+                <img src="https://via.placeholder.com/300x200" alt="Выступление 2">
+                <img src="https://via.placeholder.com/300x200" alt="Выступление 3">
+            </div>
+        </section>
+        
+        <section id="contacts">
+            <h2>Заказать выступление</h2>
+            <p>Для бронирования даты выступления или получения дополнительной информации, пожалуйста, свяжитесь с нами:</p>
+            
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="name">Ваше имя</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Детали мероприятия</label>
+                    <textarea id="message" required placeholder="Дата, место, пожелания по репертуару..."></textarea>
+                </div>
+                
+                <button type="submit">Отправить заявку</button>
+            </form>
+            
+            <h3>Контакты</h3>
+            <p>Телефон: +7 (XXX) XXX-XX-XX</p>
+            <p>Email: info@nazvaniegruppy.ru</p>
+        </section>
+    </div>
+    
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Заявка отправлена!</h2>
+            <p>Мы свяжемся с вами в течение 24 часов.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2023 Название Группы. Все права защищены.</p>
+    </footer>
+
+    <script>
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('success-modal').style.display = 'block';
+            this.reset();
+        });
+        
+        document.querySelector('.close-btn').addEventListener('click', function() {
+            document.getElementById('success-modal').style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(e) {
+            if (e.target == document.getElementById('success-modal')) {
+                document.getElementById('success-modal').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
